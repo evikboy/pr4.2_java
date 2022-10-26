@@ -17,6 +17,8 @@ public class Stats {
         this.charisma = charisma;
     }
 
+    public Stats(){}
+
     public int getStrength() {
         return strength;
     }
@@ -39,6 +41,30 @@ public class Stats {
 
     public int getCharisma() {
         return charisma;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+
+    public void setIntellect(int intellect) {
+        this.intellect = intellect;
+    }
+
+    public void setWisdom(int wisdom) {
+        this.wisdom = wisdom;
+    }
+
+    public void setCharisma(int charisma) {
+        this.charisma = charisma;
     }
 
     public static Stats generate() {
