@@ -2,12 +2,15 @@ package CharacterCreator;
 
 import CharacterCreator.DnDClass.CharacterClass;
 import CharacterCreator.DnDRace.CharacterRace;
+import CharacterCreator.Visitor.DataElement;
+import CharacterCreator.Visitor.DataElementsVisitor;
+import CharacterCreator.Visitor.ElementVisitor;
 
 import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Character {
+public class Character implements DataElement {
     private String name;
     private CharacterClass dndclass;
     private CharacterRace race;
@@ -33,6 +36,7 @@ public class Character {
         attributes.print();
     }
 
+
     public void addRaceBonuses() {
         System.out.print("\n\n!!!Recalculating attributes for ");
         this.race.print();
@@ -48,5 +52,27 @@ public class Character {
     public void talk() {
         System.out.print("Talk(): ");
         race.saySMTH();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+
+    public CharacterClass getDndclass() {
+        return dndclass;
+    }
+
+    public CharacterRace getRace() {
+        return race;
+    }
+
+    public Stats getAttributes() {
+        return attributes;
+    }
+
+    @Override
+    public void accept(DataElementsVisitor v) {
+        v.visit(this);
     }
 }

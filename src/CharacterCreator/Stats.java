@@ -1,6 +1,9 @@
 package CharacterCreator;
 
-public class Stats {
+import CharacterCreator.Visitor.DataElement;
+import CharacterCreator.Visitor.DataElementsVisitor;
+
+public class Stats implements DataElement {
     private int strength;
     private int dexterity;
     private int constitution;
@@ -73,14 +76,17 @@ public class Stats {
     }
 
     public void print() {
-        System.out.println("~~~~~~~~~~Character attributes~~~~~~~~~~"
-                + "\nStrength: " + this.strength
+        System.out.println(
+                "Strength: " + this.strength
                 + "\nDexterity: " + this.dexterity
                 + "\nConstitution: " + this.constitution
                 + "\nIntellect: " + this.intellect
                 + "\nWisdom: " + this.wisdom
-                + "\nCharisma: " + this.charisma
-                + "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                + "\nCharisma: " + this.charisma);
     }
 
+    @Override
+    public void accept(DataElementsVisitor v) {
+        v.visit(this);
+    }
 }

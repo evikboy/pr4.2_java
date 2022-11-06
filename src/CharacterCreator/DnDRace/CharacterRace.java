@@ -1,8 +1,10 @@
 package CharacterCreator.DnDRace;
 
 import CharacterCreator.Stats;
+import CharacterCreator.Visitor.DataElement;
+import CharacterCreator.Visitor.DataElementsVisitor;
 
-public abstract class CharacterRace {
+public abstract class CharacterRace implements DataElement {
     protected String name;
     protected Stats bonuses;
 
@@ -44,5 +46,14 @@ public abstract class CharacterRace {
         if (bonuses.getCharisma() > 0) {
             System.out.println("charisma+" + bonuses.getCharisma());
         }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void accept(DataElementsVisitor v) {
+        v.visit(this);
     }
 }
