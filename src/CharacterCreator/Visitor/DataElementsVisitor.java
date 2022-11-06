@@ -5,9 +5,11 @@ import CharacterCreator.DnDClass.CharacterClass;
 import CharacterCreator.DnDRace.CharacterRace;
 import CharacterCreator.Stats;
 
+import java.util.TreeMap;
+
 public interface DataElementsVisitor {
-    public void visit(Character character);
-    public void visit(Stats stats);
-    public void visit(CharacterRace characterRace);
-    public void visit(CharacterClass characterClass);
+    public Object visit(Character character, TreeMap js);
+    public Object visit(Stats stats, TreeMap js);
+    public Object visit(CharacterRace characterRace, TreeMap js);
+    public Object visit(CharacterClass characterClass, TreeMap js);
 }

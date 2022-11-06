@@ -6,31 +6,31 @@ import CharacterCreator.DnDRace.CharacterRace;
 import CharacterCreator.Stats;
 
 import java.util.Set;
+import java.util.TreeMap;
 
 public class ElementVisitor implements DataElementsVisitor {
     @Override
-    public void visit(Character character) {
-        System.out.println("!Visited Character");
-        System.out.println("Name: "+character.getName());
+    public Object visit(Character character, TreeMap js) {
+        js.put("Name", character.getName());
+        return js;
     }
 
     @Override
-    public void visit(Stats stats) {
-        System.out.println("!Visited Stats");
-        stats.print();
-
+    public Object visit(Stats stats, TreeMap js) {
+        js.put("Attributes", stats.getMapAttributes());
+        return js;
     }
 
     @Override
-    public void visit(CharacterRace characterRace) {
-        System.out.println("!Visited CharacterRace");
-        System.out.println("Race: "+characterRace.getName());
+    public Object visit(CharacterRace characterRace, TreeMap js) {
+        js.put("Race", characterRace.getName());
+        return js;
     }
 
     @Override
-    public void visit(CharacterClass characterClass) {
-        System.out.println("!Visited CharacterClass");
-        System.out.println("Class: "+characterClass.getName());
-        System.out.println("HP: "+characterClass.getHp());
+    public Object visit(CharacterClass characterClass, TreeMap js) {
+        js.put("Class", characterClass.getName());
+        js.put("HP", characterClass.getHp());
+        return js;
     }
 }

@@ -3,6 +3,8 @@ package CharacterCreator.DnDClass;
 import CharacterCreator.Visitor.DataElement;
 import CharacterCreator.Visitor.DataElementsVisitor;
 
+import java.util.TreeMap;
+
 public abstract class CharacterClass implements DataElement {
     protected String name;
     protected int hp;
@@ -25,7 +27,7 @@ public abstract class CharacterClass implements DataElement {
     }
 
     @Override
-    public void accept(DataElementsVisitor v) {
-        v.visit(this);
+    public Object accept(DataElementsVisitor v, TreeMap js) {
+        return v.visit(this, js);
     }
 }

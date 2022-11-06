@@ -3,6 +3,9 @@ package CharacterCreator;
 import CharacterCreator.Visitor.DataElement;
 import CharacterCreator.Visitor.DataElementsVisitor;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Stats implements DataElement {
     private int strength;
     private int dexterity;
@@ -46,6 +49,17 @@ public class Stats implements DataElement {
         return charisma;
     }
 
+    public Map getMapAttributes() {
+        Map<String, Integer> attr = new TreeMap<>();
+        attr.put("Strength", this.strength);
+        attr.put("Dexterity", this.dexterity);
+        attr.put("Constitution", this.constitution);
+        attr.put("Intellect", this.intellect);
+        attr.put("Wisdom", this.wisdom);
+        attr.put("Charisma", this.charisma);
+        return attr;
+    }
+
     public void setStrength(int strength) {
         this.strength = strength;
     }
@@ -86,7 +100,7 @@ public class Stats implements DataElement {
     }
 
     @Override
-    public void accept(DataElementsVisitor v) {
-        v.visit(this);
+    public Object accept(DataElementsVisitor v, TreeMap js) {
+        return v.visit(this, js);
     }
 }

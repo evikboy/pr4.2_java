@@ -1,5 +1,7 @@
 package CharacterCreator.Visitor;
 
+import java.util.TreeMap;
+
 public interface DataElement {
-    public void accept(DataElementsVisitor v);
+    public Object accept(DataElementsVisitor v, TreeMap js);
 }

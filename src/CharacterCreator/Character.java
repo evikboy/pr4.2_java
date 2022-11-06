@@ -9,6 +9,7 @@ import CharacterCreator.Visitor.ElementVisitor;
 import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeMap;
 
 public class Character implements DataElement {
     private String name;
@@ -72,7 +73,7 @@ public class Character implements DataElement {
     }
 
     @Override
-    public void accept(DataElementsVisitor v) {
-        v.visit(this);
+    public Object accept(DataElementsVisitor v, TreeMap js) {
+        return v.visit(this, js);
     }
 }
