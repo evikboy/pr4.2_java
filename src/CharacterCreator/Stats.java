@@ -1,5 +1,6 @@
 package CharacterCreator;
 
+import CharacterCreator.Memento.Memento;
 import CharacterCreator.Visitor.DataElement;
 import CharacterCreator.Visitor.DataElementsVisitor;
 
@@ -87,6 +88,16 @@ public class Stats implements DataElement {
     public static Stats generate() {
          return new Stats(Dice.rollStat(), Dice.rollStat(), Dice.rollStat(),
                  Dice.rollStat(), Dice.rollStat(), Dice.rollStat());
+    }
+
+    public void undoSave(Object obj) {
+        Memento memento = (Memento) obj;
+        this.strength = memento.getState().getStrength();
+        this.dexterity = memento.getState().getDexterity();
+        this.constitution = memento.getState().getConstitution();
+        this.intellect = memento.getState().getIntellect();
+        this.wisdom = memento.getState().getWisdom();
+        this.charisma = memento.getState().getCharisma();
     }
 
     public void print() {

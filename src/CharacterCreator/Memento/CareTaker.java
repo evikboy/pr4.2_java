@@ -17,4 +17,9 @@ public class CareTaker {
         System.out.println("!!!Loading stats from save: id=" + index);
         return mementoList.get(index);
     }
+
+    public Memento getLast() {
+        return mementoList.get(mementoList.size() - 1);
+    }
+
 }
